@@ -1,0 +1,50 @@
+#include <iostream>
+#include <fstream>
+
+int main() {
+    // створити послідовність цілих чисел
+    const int numInts = 10;
+    int seq[numInts] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        // open two output files, one for even components and one for odd components
+        std::ofstream evenFile("even.txt");
+    std::ofstream oddFile("odd.txt");
+
+    // відкрити два файли виводу, один для парних компонентів і один для непарних компонентів
+    for (int i = 0; i < numInts; i++) {
+        if (seq[i] % 2 == 0) {
+            evenFile << seq[i] << " ";
+        }
+        else {
+            oddFile << seq[i] << " ";
+        }
+    }
+
+     // закрити файли
+    evenFile.close();
+    oddFile.close();
+
+    // відкрити файли для читання
+    std::ifstream evenIn("even.txt");
+    std::ifstream oddIn("odd.txt");
+
+    // відображення вмісту файлів
+    std::cout << "Even components: ";
+    int num;
+    while (evenIn >> num) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Odd components: ";
+    while (oddIn >> num) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+   // закрити файли
+    evenIn.close();
+    oddIn.close();
+
+    return 0;
+}
